@@ -14,10 +14,16 @@ export const useDarkModeStore = defineStore('dark-mode', () => {
 
   })
 
-  const isActived = computed(() => dark)
+  function updateDarkMode() {
+    dark.value = !dark.value
+    localStorage.setItem('userPreferences', JSON.stringify({darkMode: dark.value}))
+  }
+
+  const isActived = computed(() => dark.value)
 
   return {
     dark,
+    updateDarkMode,
     isActived,
   }
 })
