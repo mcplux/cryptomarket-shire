@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .stonks {
+        @apply border-l-8 border-green-400 dark:border-green-600
+    }
+    .not-stonks {
+        @apply border-l-8 border-red-400 dark:border-red-600
+    }
+}
