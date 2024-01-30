@@ -9,7 +9,11 @@ defineProps({
 </script>
 
 <template>
-    <div class="bg-white dark:bg-slate-900 py-5 px-8 rounded-lg shadow" :class="[didIncreasePrice(crypto.changePercent24Hr) ? 'stonks' : 'not-stonks']">
+    <RouterLink 
+      :to="{name: 'crypto', params: {id: crypto.id}}" 
+      class="bg-white dark:bg-slate-900 py-5 px-8 rounded-lg shadow hover:scale-105 transition-transform" 
+      :class="[didIncreasePrice(crypto.changePercent24Hr) ? 'stonks' : 'not-stonks']"
+    >
       <div class="flex gap-3 items-center">
         <p class="w-1/6 font-bold text-2xl">#{{ crypto.rank }}</p>
         <h2 class="flex-auto font-semibold text-center text-2xl truncate">
@@ -29,5 +33,5 @@ defineProps({
           <span class="text-black dark:text-gray-200 font-bold">{{ formatPorcentage(crypto.changePercent24Hr) }}</span>
         </p>
       </div>
-    </div>
+    </RouterLink>
 </template>
