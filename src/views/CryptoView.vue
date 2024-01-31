@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { useCryptosStore } from '@/stores/cryptos'
 import CryptoInfo from '@/components/CryptoInfo.vue'
 import CryptoHistory from '@/components/CryptoHistory.vue'
+import Spinner from '@/components/Spinner.vue'
 
 const cryptos = useCryptosStore()
 
@@ -16,7 +17,7 @@ onMounted(async () => {
 
 <template>
   <main class="mt-10 p-5 dark:text-gray-200">
-    <p v-if="cryptos.loading">Loading...</p>
+    <Spinner v-if="cryptos.loading" />
     <div v-else>
       <CryptoInfo />
       <CryptoHistory />

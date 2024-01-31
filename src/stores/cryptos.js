@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import CoinCapService from '@/services/CoinCapService'
 
@@ -22,6 +22,7 @@ export const useCryptosStore = defineStore('cryptos', () => {
   }
 
   async function getCrypto(id) {
+    cryptos.value = []
     loading.value = true
     try {
       const [ data, history ] = await Promise.all([

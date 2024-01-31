@@ -9,8 +9,8 @@ const cryptos = useCryptosStore()
 </script>
 
 <template>
-  <div>
-    <h1>History</h1>
+  <div class="mt-10 container mx-auto">
+    <h2 class="text-center text-2xl font-bold mb-5">History</h2>
 
     <Line 
       id="crypto-chart"
@@ -22,8 +22,8 @@ const cryptos = useCryptosStore()
         datasets: [
           {
             label: cryptos.crypto.name,
-            borderColor: '#60a5fa',
-            backgroundColor: '#1d4ed8',
+            borderColor: '#6366f1',
+            backgroundColor: '#818cf8',
             data: cryptos.values,
           }
         ] 

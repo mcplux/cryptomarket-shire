@@ -17,6 +17,5 @@ onMounted(async () => {
         :crypto="crypto"
         :key="crypto.id" 
       />
-      <p v-if="cryptos.loading">Loading...</p>
     </div>
 </template>
