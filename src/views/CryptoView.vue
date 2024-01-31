@@ -3,6 +3,7 @@ import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useCryptosStore } from '@/stores/cryptos'
 import CryptoInfo from '@/components/CryptoInfo.vue'
+import CryptoHistory from '@/components/CryptoHistory.vue'
 
 const cryptos = useCryptosStore()
 
@@ -18,6 +19,7 @@ onMounted(async () => {
     <p v-if="cryptos.loading">Loading...</p>
     <div v-else>
       <CryptoInfo />
+      <CryptoHistory />
     </div>
   </main>
 </template>
