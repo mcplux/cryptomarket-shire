@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 import CoinCapService from '@/services/CoinCapService'
 
@@ -8,14 +8,24 @@ export const useCryptosStore = defineStore('cryptos', () => {
   const labels = ref([])
   const values = ref([])
   const loading = ref(false)
+  const error = reactive({
+    status: false,
+    msg: '',
+  })
 
   async function getCryptos() {
+    crypto.value = {}
+    labels.value = []
+    values.value = []
     loading.value = true
+    error.status = false
+    error.msg = ''
     try {
       const data = await CoinCapService.getCryptos()
       cryptos.value = data.data.data
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      error.msg = err.response?.data?.error ?? 'An error has occurred, please try again later'
+      error.status = true
     } finally {
       loading.value = false
     }
@@ -24,6 +34,8 @@ export const useCryptosStore = defineStore('cryptos', () => {
   async function getCrypto(id) {
     cryptos.value = []
     loading.value = true
+    error.status = false
+    error.msg = ''
     try {
       const [ data, history ] = await Promise.all([
         await CoinCapService.getCrypto(id),
@@ -33,8 +45,9 @@ export const useCryptosStore = defineStore('cryptos', () => {
       crypto.value = data.data.data
       labels.value = history.data.data.map(date => date.date.split('T')[0])
       values.value = history.data.data.map(date => Number(date.priceUsd))
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      error.msg = err.response?.data?.error ?? 'An error has occurred, please try again later'
+      error.status = true
     } finally {
       loading.value = false
     }
@@ -46,6 +59,7 @@ export const useCryptosStore = defineStore('cryptos', () => {
     labels,
     values,
     loading,
+    error,
     getCryptos,
     getCrypto,
   }
