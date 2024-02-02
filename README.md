@@ -1,29 +1,39 @@
-# cryptomarket-shire
+# CryptoMarketShire
 
-This template should help get you started developing with Vue 3 in Vite.
+## Description
 
-## Recommended IDE Setup
+CryptoMarket Shire is a web application that provides detailed information on the top 100 cryptocurrencies in the market. It allows users to explore the history and obtain additional data for each cryptocurrency easily and quickly.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Key Features
 
-## Customize configuration
+- List of the top 100 cryptocurrencies.
+- Detailed information for each cryptocurrency.
+- Access to historical data and additional insights.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Screenshots
 
-## Project Setup
+![Home page](/screenshots/home.png)
+![Home page Dark Mode](/screenshots/home-dark.png)
+![Page for each crypto](/screenshots/crypto.png)
+![Page for each crypto Dark Mode](/screenshots/crypto-dark.png)
 
-```sh
-npm install
-```
+## Technology Stack
 
-### Compile and Hot-Reload for Development
+- **Vue and JS:** Used for implementing the entire functionality of the project.
+- **Tailwind CSS:** Employed for the layout and styling of the application.
 
-```sh
-npm run dev
-```
+## Usage
 
-### Compile and Minify for Production
+You can access Kissa CryptoMarket directly from your web browser [here](https://cryptomarket-shire.vercel.app/).
 
-```sh
-npm run build
-```
+1. Open the link in your web browser.
+2. Explore the list of cryptocurrencies.
+3. Click on a cryptocurrency to view more details.
+
+## Acknowledgements
+
+This is a practice project, the project utilizes the CoinCap API for cryptocurrency data.
+
+---
+
+Thank you for stopping to see this project. Happy coding!
