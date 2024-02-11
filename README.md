@@ -24,7 +24,7 @@ CryptoMarket Shire is a web application that provides detailed information on th
 
 ## Usage
 
-You can access Kissa CryptoMarket directly from your web browser [here](https://cryptomarket-shire.vercel.app/).
+You can access CryptoMarketShire directly from your web browser [here](https://cryptomarket-shire.vercel.app/).
 
 1. Open the link in your web browser.
 2. Explore the list of cryptocurrencies.
