@@ -6,7 +6,7 @@ const darkMode = useDarkModeStore()
 </script>
 
 <template>
-  <div :class="{'dark': darkMode.isActived}">
+  <div :class="{'dark': darkMode.isActived}" class="max-w-screen">
     <div class="bg-gray-200 dark:bg-slate-700 min-h-screen">
       <Header />
 
