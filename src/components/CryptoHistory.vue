@@ -12,7 +12,7 @@ const userPreferences = useUserPreferencesStore()
 
 <template>
   <div class="mt-10 container mx-auto">
-    <h2 class="text-center text-2xl font-bold mb-5">History</h2>
+    <h2 class="text-center text-2xl font-bold mb-5">{{ userPreferences.lang.chart }}</h2>
 
     <div class="overflow-x-scroll md:overflow-hidden">
       <div class="w-[64rem] md:w-full">

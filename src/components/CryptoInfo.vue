@@ -1,8 +1,10 @@
 <script setup>
 import { useCryptosStore } from '@/stores/cryptos'
-import { formatCurrency, formatPorcentage } from '@/helpers';
+import { useUserPreferencesStore } from '@/stores/userPreferences'
+import { formatCurrency, formatPorcentage } from '@/helpers'
 
 const cryptos = useCryptosStore()
+const userPreferences = useUserPreferencesStore()
 </script>
 
 <template>
@@ -15,45 +17,45 @@ const cryptos = useCryptosStore()
     <div class="flex flex-col md:flex-row gap-4 justify-between md:items-center mt-5">
       <div class="space-y-4">
         <p class="text-gray-800 dark:text-gray-400 text-lg">
-          Rank: 
+          {{ userPreferences.lang.rank }}: 
           <span class="text-black dark:text-gray-100 font-bold">#{{ cryptos.crypto.rank }}</span>
         </p>
 
         <p class="text-gray-800 dark:text-gray-400 text-lg">
-          Price: 
+          {{ userPreferences.lang.price }}: 
           <span class="text-black dark:text-gray-100 font-bold">{{ formatCurrency(cryptos.crypto?.priceUsd) }}</span>
         </p>
 
         <p class="text-gray-800 dark:text-gray-400 text-lg">
-          Change (24h): 
+          {{ userPreferences.lang.change }} (24h): 
           <span class="text-black dark:text-gray-100 font-bold">{{ formatPorcentage(cryptos.crypto.changePercent24Hr) }}</span>
         </p>
       </div>
 
       <div class="space-y-4">
         <p class="text-gray-800 dark:text-gray-400 text-lg">
-          Supply: 
+          {{ userPreferences.lang.supply }}: 
           <span class="text-black dark:text-gray-100 font-bold">
             {{ cryptos.crypto.symbol }} {{ cryptos.crypto?.supply?.split('.')[0] }}
           </span>
         </p>
 
         <p class="text-gray-800 dark:text-gray-400 text-lg">
-          Max supply: 
+          {{ userPreferences.lang.maxSupply }}: 
           <span class="text-black dark:text-gray-100 font-bold">
             {{ cryptos.crypto.symbol }} {{ cryptos.crypto?.maxSupply?.split('.')[0] ?? '-' }}
           </span>
         </p>
 
         <p class="text-gray-800 dark:text-gray-400 text-lg">
-          Volume (24h): 
+          {{ userPreferences.lang.volume }} (24h): 
           <span class="text-black dark:text-gray-100 font-bold">
             ${{ cryptos.crypto?.volumeUsd24Hr?.split('.')[0] ?? '-' }}
           </span>
         </p>
 
         <p class="text-gray-800 dark:text-gray-400 text-lg">
-          MarketCap: 
+          {{ userPreferences.lang.marketCap }}: 
           <span class="text-black dark:text-gray-100 font-bold">
             ${{ cryptos.crypto?.marketCapUsd?.split('.')[0] ?? '-' }}
           </span>

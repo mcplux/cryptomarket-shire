@@ -5,6 +5,7 @@
   "rank": "Rank",
   "supply": "Supply",
   "maxSupply": "Max Supply",
+  "volume": "Volume",
   "marketCap": "Market Cap",
-  "graph": "Graph"
+  "chart": "Chart"
 }
