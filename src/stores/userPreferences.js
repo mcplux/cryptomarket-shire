@@ -17,8 +17,8 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
       darkMode.value = JSON.parse(localStorage.getItem('userPreferences')).darkMode ?? false
       localStorage.setItem('userPreferences', JSON.stringify({darkMode: darkMode.value, lang: language.value}))
     } else {
-      const language = (navigator.language || 'en').substring(0, 2)
-      language.value = Object.keys(supportedLangs.value).includes(language) ? language : 'en'
+      const navigatorLang = (navigator.language || 'en').substring(0, 2)
+      language.value = Object.keys(supportedLangs.value).includes(navigatorLang) ? navigatorLang : 'en'
       importLanguage()
 
       darkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
