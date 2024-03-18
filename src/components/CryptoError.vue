@@ -6,6 +6,6 @@ const cryptos = useCryptosStore()
 
 <template>
   <div class="bg-red-400 max-w-md mx-auto p-3 rounded">
-    <p class="text-red-900 uppercase text-center font-bold">{{ cryptos.error.msg }}</p>
+    <p class="text-red-900 uppercase text-center font-bold">{{ cryptos.error.msg || 'An error has occurred' }}</p>
   </div>
 </template>

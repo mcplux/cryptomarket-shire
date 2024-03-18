@@ -2,9 +2,11 @@ import { onMounted, reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 import CoinCapService from '@/services/CoinCapService'
+import { useUserPreferencesStore } from './userPreferences'
 
 export const useCryptosStore = defineStore('cryptos', () => {
   const router = useRouter()
+  const userPreferences = useUserPreferencesStore()
 
   const cryptos = ref([])
   const crypto = ref({})
@@ -27,6 +29,7 @@ export const useCryptosStore = defineStore('cryptos', () => {
     error.status = false
     error.msg = ''
 
+    userPreferences.updateLanguage('en')
     getCryptos()
     router.push({name: 'home'})
   }
@@ -42,7 +45,7 @@ export const useCryptosStore = defineStore('cryptos', () => {
       const data = await CoinCapService.getCryptos()
       cryptos.value = data.data.data
     } catch (err) {
-      error.msg = err.response?.data?.error ?? 'An error has occurred, please try again later'
+      error.msg = err.response?.data?.error ?? userPreferences.lang.genericError
       error.status = true
     } finally {
       loading.value = false
@@ -64,7 +67,7 @@ export const useCryptosStore = defineStore('cryptos', () => {
       labels.value = history.data.data.map(date => date.date.split('T')[0])
       values.value = history.data.data.map(date => Number(date.priceUsd))
     } catch (err) {
-      error.msg = err.response?.data?.error ?? 'An error has occurred, please try again later'
+      error.msg = err.response?.data?.error ?? userPreferences.lang.genericError
       error.status = true
     } finally {
       loading.value = false
