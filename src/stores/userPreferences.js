@@ -4,7 +4,10 @@ import { defineStore } from 'pinia'
 export const useUserPreferencesStore = defineStore('user-preferences', () => {
   const darkMode = ref(false)
   const lang = ref('')
-  const supportedLangs = ref(['es', 'en'])
+  const supportedLangs = ref({
+    es: 'Español',
+    en: 'English',
+  })
 
   onMounted(() => {
     if(localStorage.getItem('userPreferences')) {
@@ -15,7 +18,7 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
     } else {
       const language = (navigator.language || 'en').substring(0, 2)
 
-      lang.value = supportedLangs.value.includes(language) ? language : 'es'
+      lang.value = Object.keys(supportedLangs.value).includes(language) ? language : 'en'
       darkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
       localStorage.setItem('userPreferences', JSON.stringify({darkMode: darkMode.value, lang: lang.value}))
     }
@@ -24,14 +27,23 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
 
   function updateDarkMode() {
     darkMode.value = !darkMode.value
-    localStorage.setItem('userPreferences', JSON.stringify({darkMode: darkMode.value}))
+    localStorage.setItem('userPreferences', JSON.stringify({darkMode: darkMode.value, lang: lang.value}))
+  }
+
+  function updateLanguage(newLang) {
+    lang.value = Object.keys(supportedLangs.value).includes(newLang) ? newLang : lang.value
+    localStorage.setItem('userPreferences', JSON.stringify({darkMode: darkMode.value, lang: lang.value}))
   }
 
   const isDarkModeActivated = computed(() => darkMode.value)
+  const currentLanguage = computed(() => supportedLangs.value[lang.value])
 
   return {
     darkMode,
+    supportedLangs,
     updateDarkMode,
+    updateLanguage,
     isDarkModeActivated,
+    currentLanguage,
   }
 })
