@@ -14,7 +14,7 @@ const userPreferences = useUserPreferencesStore()
     <CryptoError v-if="cryptos.error.status" />
     <div v-else>
       <h1 class="font-bold text-4xl text-center">CryptoMarketShire</h1>
-      <p class="text-lg mt-5">Know the 100 most important cryptocurrencies on the markets. Click one for more details</p>
+      <p class="text-lg mt-5">{{ userPreferences.lang.subtitle }}</p>
 
       <Spinner v-if="cryptos.loading" />
     

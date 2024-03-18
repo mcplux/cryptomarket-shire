@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const useUserPreferencesStore = defineStore('user-preferences', () => {
   const darkMode = ref(false)
   const language = ref('')
-  const lang = ({})
+  const lang = ref({})
   const supportedLangs = ref({
     en: 'English',
   })

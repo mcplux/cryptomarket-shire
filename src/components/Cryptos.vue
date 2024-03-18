@@ -1,6 +1,5 @@
 <script setup>
 import { useCryptosStore } from '@/stores/cryptos'
-import { onMounted } from 'vue'
 import Crypto from './Crypto.vue'
 
 const cryptos = useCryptosStore()
