@@ -1,10 +1,12 @@
 <script setup>
 import { useCryptosStore } from '@/stores/cryptos'
+import { useUserPreferencesStore } from '@/stores/userPreferences'
 import Cryptos from '@/components/Cryptos.vue'
 import Spinner from '@/components/Spinner.vue'
 import CryptoError from '@/components/CryptoError.vue'
 
 const cryptos = useCryptosStore()
+const userPreferences = useUserPreferencesStore()
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const cryptos = useCryptosStore()
 
       <Spinner v-if="cryptos.loading" />
     
-      <Cryptos />
+      <Cryptos v-else />
     </div>
   </main>
 </template>

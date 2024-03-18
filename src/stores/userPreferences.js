@@ -49,6 +49,7 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
   const currentLanguage = computed(() => supportedLangs.value[language.value])
 
   return {
+    lang,
     supportedLangs,
     updateDarkMode,
     updateLanguage,

@@ -5,9 +5,6 @@ import Crypto from './Crypto.vue'
 
 const cryptos = useCryptosStore()
 
-onMounted(async () => {
-  await cryptos.getCryptos()
-})
 </script>
 
 <template>

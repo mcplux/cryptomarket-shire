@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 import CoinCapService from '@/services/CoinCapService'
@@ -16,6 +16,10 @@ export const useCryptosStore = defineStore('cryptos', () => {
     msg: '',
   })
 
+  onMounted(() => {
+    getCryptos()
+  })
+
   function returnHome() {
     crypto.value = {}
     labels.value = []
@@ -23,6 +27,7 @@ export const useCryptosStore = defineStore('cryptos', () => {
     error.status = false
     error.msg = ''
 
+    getCryptos()
     router.push({name: 'home'})
   }
 
