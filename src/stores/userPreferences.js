@@ -1,4 +1,4 @@
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUserPreferencesStore = defineStore('user-preferences', () => {
@@ -7,6 +7,10 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
   const lang = ref({})
   const supportedLangs = ref({
     en: 'English',
+  })
+  const error = reactive({
+    msg: '',
+    status: false,
   })
 
   onMounted(() => {
@@ -27,11 +31,16 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
     }
   })
 
-  function importLanguage() {
-    fetch(`locale/${language.value}.json`)
-      .then(response => response.json())
-      .then(data => lang.value = data)
-      .catch(err => console.error(err))
+  async function importLanguage() {
+    error.status = false
+    error.msg = ''
+    try {
+      const response = await fetch(`locale/${language.value}.json`)
+      lang.value = await response.json()
+    } catch (err) {
+      error.status = true
+      error.msg = 'An error has occurred'
+    }
   }
 
   function updateDarkMode() {
@@ -50,6 +59,7 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
 
   return {
     lang,
+    error,
     supportedLangs,
     updateDarkMode,
     updateLanguage,

@@ -11,7 +11,7 @@ const userPreferences = useUserPreferencesStore()
 
 <template>
   <main class="container mx-auto mt-10 p-5 dark:text-gray-200">
-    <CryptoError v-if="cryptos.error.status" />
+    <CryptoError v-if="cryptos.error.status || userPreferences.error.status" />
     <div v-else>
       <h1 class="font-bold text-4xl text-center">CryptoMarketShire</h1>
       <p class="text-lg mt-5">{{ userPreferences.lang.subtitle }}</p>
