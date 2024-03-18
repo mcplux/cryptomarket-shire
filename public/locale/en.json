@@ -7,5 +7,6 @@
   "maxSupply": "Max Supply",
   "volume": "Volume",
   "marketCap": "Market Cap",
-  "chart": "Chart"
+  "chart": "Chart",
+  "genericError": "An error has occurred, Pleas try again later"
 }
