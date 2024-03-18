@@ -1,10 +1,12 @@
 <script setup>
 import { useCryptosStore } from '@/stores/cryptos'
+import { useUserPreferencesStore } from '@/stores/userPreferences'
 import Cryptos from '@/components/Cryptos.vue'
 import Spinner from '@/components/Spinner.vue'
 import CryptoError from '@/components/CryptoError.vue'
 
 const cryptos = useCryptosStore()
+const userPreferences = useUserPreferencesStore()
 </script>
 
 <template>
@@ -12,11 +14,11 @@ const cryptos = useCryptosStore()
     <CryptoError v-if="cryptos.error.status" />
     <div v-else>
       <h1 class="font-bold text-4xl text-center">CryptoMarketShire</h1>
-      <p class="text-lg mt-5">Know the 100 most important cryptocurrencies on the markets. Click one for more details</p>
+      <p class="text-lg mt-5">{{ userPreferences.lang.subtitle }}</p>
 
       <Spinner v-if="cryptos.loading" />
     
-      <Cryptos />
+      <Cryptos v-else />
     </div>
   </main>
 </template>

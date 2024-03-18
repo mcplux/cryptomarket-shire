@@ -2,17 +2,17 @@
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
 import { Line } from 'vue-chartjs'
 import { useCryptosStore } from '@/stores/cryptos'
-import { useDarkModeStore } from '@/stores/darkMode'
+import { useUserPreferencesStore } from '@/stores/userPreferences'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
 const cryptos = useCryptosStore()
-const darkMode = useDarkModeStore()
+const userPreferences = useUserPreferencesStore()
 </script>
 
 <template>
   <div class="mt-10 container mx-auto">
-    <h2 class="text-center text-2xl font-bold mb-5">History</h2>
+    <h2 class="text-center text-2xl font-bold mb-5">{{ userPreferences.lang.chart }}</h2>
 
     <div class="overflow-x-scroll md:overflow-hidden">
       <div class="w-[64rem] md:w-full">
@@ -23,18 +23,18 @@ const darkMode = useDarkModeStore()
             scales: {
               x: {
                 ticks: {
-                  color: darkMode.isActived ? '#9ca3af' : '#1f2937'
+                  color: userPreferences.isDarkModeActivated ? '#9ca3af' : '#1f2937'
                 },
                 grid: {
-                  color: darkMode.isActived ? '#4b5563' : '#9ca3af'
+                  color: userPreferences.isDarkModeActivated ? '#4b5563' : '#9ca3af'
                 }
               },
               y: {
                 ticks: {
-                  color: darkMode.isActived ? '#9ca3af' : '#1f2937'
+                  color: userPreferences.isDarkModeActivated ? '#9ca3af' : '#1f2937'
                 },
                 grid: {
-                  color: darkMode.isActived ? '#4b5563' : '#9ca3af'
+                  color: userPreferences.isDarkModeActivated ? '#4b5563' : '#9ca3af'
                 }
               },
             }

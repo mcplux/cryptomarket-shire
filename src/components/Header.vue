@@ -1,10 +1,11 @@
 <script setup>
-import { useDarkModeStore } from '@/stores/darkMode'
+import { useUserPreferencesStore } from '@/stores/userPreferences'
 import SunIcon from './icons/SunIcon.vue'
 import MoonIcon from './icons/MoonIcon.vue'
 import { useCryptosStore } from '@/stores/cryptos'
+import LanguageOptions from './LanguageOptions.vue'
 
-const darkMode = useDarkModeStore()
+const userPreferences = useUserPreferencesStore()
 const cryptos = useCryptosStore()
 </script>
 
@@ -13,10 +14,13 @@ const cryptos = useCryptosStore()
     <div class="flex justify-between text-gray-200 container mx-auto">
       <button @click="cryptos.returnHome" class="text-2xl font-bold">CryptoMarketShire</button>
       
-      <button @click="darkMode.updateDarkMode">
-        <SunIcon v-if="darkMode.isActived" />
-        <MoonIcon v-else />
-      </button>
+      <div class="flex gap-3 items-center">
+        <LanguageOptions />
+        <button @click="userPreferences.updateDarkMode">
+          <SunIcon v-if="userPreferences.isDarkModeActivated" />
+          <MoonIcon v-else />
+        </button>
+      </div>
     </div>
   </header>
 </template>

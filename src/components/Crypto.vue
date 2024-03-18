@@ -1,5 +1,8 @@
 <script setup>
+import { useUserPreferencesStore } from '@/stores/userPreferences'
 import { formatCurrency, formatPorcentage, didIncreasePrice } from '@/helpers'
+
+const userPreferences = useUserPreferencesStore()
 
 defineProps({
   crypto: {
@@ -24,12 +27,12 @@ defineProps({
 
       <div class="mt-3">
         <p class="text-gray-700 dark:text-gray-500 text-lg">
-          Price: 
+          {{ userPreferences.lang.price }}: 
           <span class="text-black dark:text-gray-200 font-bold">{{ formatCurrency(crypto.priceUsd) }}</span>
         </p>
         
         <p class="text-gray-700 dark:text-gray-500 text-lg">
-          Change: 
+          {{ userPreferences.lang.change }}: 
           <span class="text-black dark:text-gray-200 font-bold">{{ formatPorcentage(crypto.changePercent24Hr) }}</span>
         </p>
       </div>
