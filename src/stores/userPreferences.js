@@ -7,6 +7,7 @@ export const useUserPreferencesStore = defineStore('user-preferences', () => {
   const lang = ref({})
   const supportedLangs = ref({
     en: 'English',
+    es: 'Español',
   })
   const error = reactive({
     msg: '',

@@ -1,0 +1,12 @@
+{
+  "subtitle": "Conoce las 100 criptomonedas más importantes del mercado. Haz clic en alguna para ver más detalles.",
+  "price": "Precio",
+  "change": "Cambio",
+  "rank": "Posición",
+  "supply": "Suministro",
+  "maxSupply": "Suministro máx.",
+  "volume": "Volumen",
+  "marketCap": "Cap. del mercado",
+  "chart": "Gráfica",
+  "genericError": "Ha ocurrido un error. Por favor, inténtalo más tarde"
+}
