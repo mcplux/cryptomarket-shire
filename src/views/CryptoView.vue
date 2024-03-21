@@ -21,7 +21,7 @@ onMounted(async () => {
   <main class="mt-10 p-5 dark:text-gray-200">
     <Spinner v-if="cryptos.loading" />
     <CryptoError v-else-if="cryptos.error.status || userPreferences.error.status" />
-    <div v-else>
+    <div class="container mx-auto" v-else>
       <CryptoInfo />
       <CryptoHistory />
     </div>

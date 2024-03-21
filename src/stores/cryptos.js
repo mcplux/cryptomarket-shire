@@ -58,13 +58,17 @@ export const useCryptosStore = defineStore('cryptos', () => {
     error.msg = ''
     try {
       const [ data, history ] = await Promise.all([
-        await CoinCapService.getCrypto(id),
-        await CoinCapService.getHistory(id),
+        CoinCapService.getCrypto(id),
+        CoinCapService.getHistory(id),
       ])
 
       crypto.value = data.data.data
       labels.value = history.data.data.map(date => date.date.split('T')[0])
       values.value = history.data.data.map(date => Number(date.priceUsd))
+
+      labels.value.push(new Date().toISOString().split('T')[0])
+      values.value.push(crypto.value.priceUsd)
+      
     } catch (err) {
       error.msg = err.response?.data?.error ?? userPreferences.lang.genericError
       error.status = true
