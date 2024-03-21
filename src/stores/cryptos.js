@@ -29,7 +29,6 @@ export const useCryptosStore = defineStore('cryptos', () => {
     error.status = false
     error.msg = ''
 
-    userPreferences.updateLanguage('en')
     getCryptos()
     router.push({name: 'home'})
   }
